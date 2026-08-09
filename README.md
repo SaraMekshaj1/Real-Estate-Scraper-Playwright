@@ -20,6 +20,7 @@ A fault-tolerant web scraping system designed to collect thousands of property l
 - Concurrent asynchronous architecture
 - Automatic failed URL retry pipeline
 - Duplicate prevention and validation
+- Includes post-processing utilities for deduplicating exported properties and retrying previously failed URLs.
 
 ---
 ## Overview
@@ -173,6 +174,8 @@ Transient failures are stored and automatically retried in subsequent runs.
 - **Long-running scraper reliability** – Added run-state tracking and page-exhaustion detection to prevent incomplete runs from being mistakenly treated as successful.
 
 - **Scalable state storage** – Scalable state storage – Storage abstraction designed to support future JSON, SQLite, and Redis backends.
+
+- **Scripts** Includes post-processing utilities for deduplicating exported properties and retrying previously failed URLs.
 
 
 ---
