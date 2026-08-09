@@ -72,7 +72,7 @@ class FailedUrlStore:
     """
     
 
-    def __init__(self, path: str = "output/failed_urls.json") -> None:
+    def __init__(self, path: str ) -> None:
         self._path = Path(path)
         self._lock = asyncio.Lock()
         self._data: dict[str, FailedUrlEntry] = {}

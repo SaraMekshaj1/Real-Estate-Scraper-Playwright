@@ -179,11 +179,6 @@ class Container:
     def crawler(self) -> Crawler:
         return Crawler(self.client(), self.next_page_paginator(), self.settings.max_pages, self.logger)
 
-    def detail_content_validator(self) -> Callable[[str], bool]:
-        # Cheap substring check — the contact-info block on a valid
-        # product page always renders with this container class.
-        marker = "elt_contact_info_table"
-        return lambda html: marker in html
 
     def checkpoint_store(self) -> BaseCheckpointStore:
         if self._checkpoint_store is None:

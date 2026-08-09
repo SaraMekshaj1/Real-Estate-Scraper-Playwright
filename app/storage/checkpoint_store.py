@@ -17,7 +17,7 @@ class JsonCheckpointStore(BaseCheckpointStore):
     bottleneck on a very large site.
     """
 
-    def __init__(self, path: str = "output/checkpoint.json") -> None:
+    def __init__(self, path: str ) -> None:
         self._path = Path(path)
         self._data: dict[str, Any] = {}
         self._load()

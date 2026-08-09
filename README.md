@@ -260,7 +260,7 @@ hammering the server, reducing wasted retries and improving recovery.
 ## Installation
 
 ```bash
-git clone https://github.com/SaraMekshaj1/real-estate-scraper-http-playwright.git
+git clone https://github.com/SaraMekshaj1/Real-Estate-Scraper-Playwright.git
 cd real-estate-scraper-http-playwright
 python -m venv venv
 venv\Scripts\activate

@@ -3,27 +3,22 @@ import os
 from dataclasses import dataclass, field
 from pathlib import Path
 
-
 def _env(key: str, default: str) -> str:
     return os.getenv(key, default)
-
 
 def _env_int(key: str, default: int) -> int:
     val = os.getenv(key)
     return int(val) if val is not None else default
 
-
 def _env_float(key: str, default: float) -> float:
     val = os.getenv(key)
     return float(val) if val is not None else default
-
 
 def _env_bool(key: str, default: bool) -> bool:
     val = os.getenv(key)
     if val is None:
         return default
     return val.strip().lower() in {"1", "true", "yes", "on"}
-
 
 @dataclass(frozen=True)
 class Settings:
@@ -98,9 +93,17 @@ class Settings:
     # Path to a log file, e.g. "scraper.log". Empty string = console only.
     log_file: str = field(default_factory=lambda: _env("LOG_FILE", ""))
 
-    checkpoint_path: str = "output/checkpoint.json"
-    failed_urls_path: str = "output/failed_urls.json"
-    enable_resume: bool = True
+    checkpoint_path: str = field(
+    default_factory=lambda: str(Path(_env("OUTPUT_DIR", "output")) / "checkpoint.json")
+    )
+
+    failed_urls_path: str = field(
+        default_factory=lambda: str(Path(_env("OUTPUT_DIR", "output")) / "failed_urls.json")
+    )
+
+    enable_resume: bool = field(
+        default_factory=lambda: _env_bool("ENABLE_RESUME", True)
+    )
     
     def ensure_output_dir(self) -> Path:
         path = Path(self.output_dir)
